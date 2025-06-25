@@ -1,0 +1,780 @@
+/* app/(dashboard)/styles.module.css */
+
+
+/* Scrollbar Utilities */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+  border-radius: 2px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #dddddd;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #5c5c7b;
+  border-radius: 50px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #7878a3;
+}
+
+/* Crypto-Themed Glassmorphism */
+.glassmorphism {
+  background: rgba(16, 24, 39, 0.7); /* Darker for crypto theme */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Typography Scale */
+.text-10 { font-size: 10px; line-height: 14px; }
+.text-12 { font-size: 12px; line-height: 16px; }
+.text-14 { font-size: 14px; line-height: 20px; }
+.text-16 { font-size: 16px; line-height: 24px; }
+.text-18 { font-size: 18px; line-height: 22px; }
+.text-20 { font-size: 20px; line-height: 24px; }
+.text-24 { font-size: 24px; line-height: 30px; }
+.text-26 { font-size: 26px; line-height: 32px; }
+.text-30 { font-size: 30px; line-height: 38px; }
+.text-36 { font-size: 36px; line-height: 44px; }
+
+/* Crypto Color Palette */
+:root {
+  --crypto-primary: #8A2BE2;  /* Vibrant purple */
+  --crypto-secondary: #00D1FF; /* Electric blue */
+  --crypto-accent: #FF6B00;    /* Orange for alerts */
+  --crypto-dark: #0F172A;      /* Dark slate */
+  --crypto-light: #F8FAFC;     /* Light bg */
+  --crypto-success: #10B981;   /* Green for profits */
+  --crypto-danger: #EF4444;    /* Red for losses */
+}
+
+/* Layout Utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Dashboard Structure */
+.dashboard-container {
+  background: var(--crypto-dark);
+  min-height: 100vh;
+  color: white;
+}
+
+.main-content {
+  padding: 2rem;
+  flex-grow: 1;
+  background: linear-gradient(to bottom, var(--crypto-dark), #1E293B);
+}
+
+/* Crypto Card Styles */
+.crypto-card {
+  background: rgba(30, 41, 59, 0.7);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.crypto-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(138, 43, 226, 0.2);
+}
+
+/* Portfolio Overview */
+.portfolio-summary {
+  background: linear-gradient(135deg, var(--crypto-primary), var(--crypto-secondary));
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 20px rgba(138, 43, 226, 0.3);
+}
+
+/* Exchange Connection UI */
+.exchange-connection {
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.exchange-connection:hover {
+  border-color: var(--crypto-secondary);
+  background: rgba(0, 209, 255, 0.05);
+}
+
+/* Strategy Cards */
+.strategy-card {
+  background: rgba(15, 23, 42, 0.6);
+  border-left: 3px solid var(--crypto-primary);
+}
+
+.strategy-card.active {
+  border-left-color: var(--crypto-success);
+  background: rgba(16, 185, 129, 0.05);
+}
+
+/* Form Elements */
+.crypto-input {
+  background: rgba(15, 23, 42, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  color: white;
+  transition: border 0.3s ease;
+}
+
+.crypto-input:focus {
+  outline: none;
+  border-color: var(--crypto-secondary);
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(to right, var(--crypto-primary), var(--crypto-secondary));
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+}
+
+/* Right Sidebar - Market Data */
+.market-data-sidebar {
+  background: rgba(15, 23, 42, 0.8);
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Price Change Indicators */
+.price-up {
+  color: var(--crypto-success);
+}
+
+.price-down {
+  color: var(--crypto-danger);
+}
+
+/* Order Book Styles */
+.order-book {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.bid-row {
+  background: rgba(16, 185, 129, 0.1);
+}
+
+.ask-row {
+  background: rgba(239, 68, 68, 0.1);
+}
+
+/* Responsive Tables */
+.crypto-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.crypto-table th {
+  background: rgba(15, 23, 42, 0.9);
+  position: sticky;
+  top: 0;
+}
+
+.crypto-table tr:nth-child(even) {
+  background: rgba(15, 23, 42, 0.4);
+}
+
+/* Mobile Navigation */
+.mobile-nav {
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+/* Chart Container */
+.chart-container {
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+/* Tooltip Styles */
+.tooltip {
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Animations */
+@keyframes pulseCrypto {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.updating {
+  animation: pulseCrypto 1.5s infinite;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+  }
+  
+  .portfolio-summary {
+    flex-direction: column;
+  }
+}
+
+/* app/(dashboard)/styles.module.css */
+
+:root {
+  /* Crypto Color Palette */
+  --crypto-primary: #8A2BE2;
+  --crypto-secondary: #00D1FF;
+  --crypto-accent: #FF6B00;
+  --crypto-dark: #0F172A;
+  --crypto-darker: #020617;
+  --crypto-light: #F8FAFC;
+  --crypto-success: #10B981;
+  --crypto-danger: #EF4444;
+  --crypto-warning: #F59E0B;
+  --crypto-info: #3B82F6;
+  
+  /* Text Colors */
+  --text-primary: #F1F5F9;
+  --text-secondary: #94A3B8;
+  --text-muted: #64748B;
+  
+  /* Borders */
+  --border-light: rgba(255, 255, 255, 0.1);
+  --border-dark: rgba(0, 0, 0, 0.2);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-crypto: 0 10px 25px rgba(138, 43, 226, 0.2);
+}
+
+/* ================ Layout & Structure ================ */
+.dashboard-layout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, var(--crypto-dark), var(--crypto-darker));
+  color: var(--text-primary);
+}
+
+/* Main Content Area */
+.main-content {
+  padding: 2rem;
+  overflow-y: auto;
+  position: relative;
+}
+
+.content-container {
+  max-width: 1800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Sidebar Styles */
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 280px;
+  background: rgba(15, 23, 42, 0.9);
+  border-right: 1px solid var(--border-light);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  z-index: 50;
+}
+
+.sidebar-header {
+  padding: 0 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.sidebar-logo {
+  font-size: 1.625rem;
+  font-weight: 700;
+  background: linear-gradient(to right, var(--crypto-primary), var(--crypto-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.sidebar-nav {
+  flex: 1;
+  margin-top: 1.5rem;
+  overflow-y: auto;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background: rgba(138, 43, 226, 0.1);
+  color: var(--text-primary);
+}
+
+.sidebar-link.active {
+  background: rgba(138, 43, 226, 0.2);
+  color: white;
+}
+
+.sidebar-icon {
+  margin-right: 0.75rem;
+  width: 20px;
+  height: 20px;
+}
+
+.sidebar-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+/* Right Sidebar - Market Data */
+.right-sidebar {
+  width: 340px;
+  background: rgba(15, 23, 42, 0.8);
+  border-left: 1px solid var(--border-light);
+  padding: 1.5rem;
+  overflow-y: auto;
+}
+
+/* ================ Form Styles ================ */
+.form-container {
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid var(--border-light);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid var(--border-light);
+  border-radius: 0.5rem;
+  color: var(--text-primary);
+  font-size: 0.875rem;
+  transition: border 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--crypto-secondary);
+  box-shadow: 0 0 0 3px rgba(0, 209, 255, 0.1);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2394A3B8' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+}
+
+.form-message {
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.form-message.error {
+  color: var(--crypto-danger);
+}
+
+.form-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(to right, var(--crypto-primary), var(--crypto-secondary));
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.form-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.form-link {
+  color: var(--crypto-secondary);
+  font-size: 0.875rem;
+  text-align: center;
+  display: block;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+/* ================ Card Styles ================ */
+.card {
+  background: rgba(15, 23, 42, 0.7);
+  border-radius: 1rem;
+  border: 1px solid var(--border-light);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-crypto);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Exchange Connection Card */
+.exchange-card {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border: 1px dashed var(--border-light);
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.exchange-card:hover {
+  border-color: var(--crypto-secondary);
+  background: rgba(0, 209, 255, 0.05);
+}
+
+.exchange-logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.exchange-name {
+  font-weight: 500;
+}
+
+.exchange-status {
+  margin-left: auto;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.exchange-status.connected {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--crypto-success);
+}
+
+.exchange-status.disconnected {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--crypto-danger);
+}
+
+/* ================ Table Styles ================ */
+.table-container {
+  overflow-x: auto;
+}
+
+.crypto-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  min-width: 800px;
+}
+
+.crypto-table th {
+  background: rgba(15, 23, 42, 0.9);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.crypto-table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 0.875rem;
+}
+
+.crypto-table tr:last-child td {
+  border-bottom: none;
+}
+
+.crypto-table tr:hover td {
+  background: rgba(138, 43, 226, 0.05);
+}
+
+/* ================ Utility Classes ================ */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gap-1 { gap: 0.25rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
+.gap-4 { gap: 1rem; }
+.gap-5 { gap: 1.25rem; }
+.gap-6 { gap: 1.5rem; }
+.gap-8 { gap: 2rem; }
+
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 0.75rem; }
+.p-4 { padding: 1rem; }
+.p-5 { padding: 1.25rem; }
+.p-6 { padding: 1.5rem; }
+.p-8 { padding: 2rem; }
+
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 0.75rem; }
+.mt-4 { margin-top: 1rem; }
+.mt-5 { margin-top: 1.25rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+
+/* ================ Responsive Styles ================ */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 240px;
+    padding: 1rem 0.75rem;
+  }
+  
+  .right-sidebar {
+    width: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    transition: left 0.3s ease;
+  }
+  
+  .sidebar.open {
+    left: 0;
+  }
+  
+  .right-sidebar {
+    position: fixed;
+    right: -100%;
+    top: 0;
+    height: 100vh;
+    transition: right 0.3s ease;
+  }
+  
+  .right-sidebar.open {
+    right: 0;
+  }
+  
+  .main-content {
+    padding: 1rem;
+  }
+}
+
+/* ================ Animation ================ */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* ================ Custom Scrollbars ================ */
+/* (Previous scrollbar styles remain the same) */
+/* Add to app/(dashboard)/styles.module.css */
+.loadingContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: var(--crypto-dark);
+}
+
+/* Add to app/(dashboard)/styles.module.css */
+
+/* Dashboard Layout */
+.dashboardLayout {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, var(--crypto-dark), var(--crypto-darker));
+}
+
+.mainContentArea {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.rootLayout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  background: rgba(15, 23, 42, 0.8);
+  border-bottom: 1px solid var(--border-light);
+}
+
+/* Mobile Nav Specific */
+.mobileNavContainer {
+  width: 100%;
+  max-width: 264px;
+}
+
+.mobileNavTrigger {
+  cursor: pointer;
+}
+
+.mobileNavSheet {
+  border: none;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.mobileNavLogo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+.mobileNavTitle {
+  font-size: 1.625rem;
+  font-weight: 700;
+  background: linear-gradient(to right, var(--crypto-primary), var(--crypto-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mobileNavContent {
+  height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: auto;
+}
+
+.mobileNavLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  color: white;
+}
+
+.mobileNavLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.mobileNavLink:hover {
+  background: rgba(138, 43, 226, 0.1);
+}
+
+.mobileNavLinkText {
+  font-size: 1rem;
+  font-weight: 500;
+}
